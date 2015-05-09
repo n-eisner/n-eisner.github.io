@@ -1,0 +1,17 @@
+<head>
+It works!
+</head>
+<script type="text/javascript">
+    var recognition = new SpeechRecognition();
+    recognition.onresult = function(event) {
+      if (event.results.length > 0) {
+        q.value = event.results[0][0].transcript;
+        q.form.submit();
+      }
+    }
+  </script>
+
+  <form action="http://localhost">
+    <input type="search" id="q" name="q" size=60>
+    <input type="button" value="Click to Speak" onclick="recognition.start()">
+  </form>
