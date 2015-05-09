@@ -1,0 +1,9 @@
+<script type="text/javascript">
+      function startSearch(event) {
+        event.target.form.submit();
+      }
+    </script>
+
+    <form action="http://www.google.com/search">
+    <input type="search" name="q" speech required onspeechchange="startSearch">
+    </form>
