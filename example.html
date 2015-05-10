@@ -89,6 +89,12 @@ a.c1 {font-weight: normal;}
   <body class="" id="grid">
     <div class="browser-landing" id="main">
       <div class="compact marquee-stacked" id="marquee">
+        <div class="marquee-copy">
+          <h1>
+            <a class="c1" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">Web
+            Speech API</a> Demonstration
+          </h1>
+        </div>
       </div>
       <div class="compact marquee">
         <div id="info">
@@ -125,7 +131,7 @@ a.c1 {font-weight: normal;}
         </div>
         <div id="div_start">
           <button id="start_button" onclick="startButton(event)"><img alt="Start" id="start_img"
-          src="/images/mic.gif"></button>
+          src="/intl/en/chrome/assets/common/images/content/mic.gif"></button>
         </div>
         <div id="results">
           <span class="final" id="final_span"></span> <span class="interim" id=
@@ -150,6 +156,11 @@ a.c1 {font-weight: normal;}
               (See chrome://settings/handlers to change.)
             </p>
           </div>
+        </div>
+        <div class="compact marquee" id="div_language">
+          <select id="select_language" onchange="updateCountry()">
+            </select>&nbsp;&nbsp; <select id="select_dialect">
+            </select>
         </div>
       </div>
     </div><script src="/intl/en/chrome/assets/common/js/chrome.min.js">
@@ -245,12 +256,12 @@ var langs =
  ['Pусский',         ['ru-RU']],
  ['Српски',          ['sr-RS']],
  ['Українська',      ['uk-UA']],
- ['한국어',            ['ko-KR']],
- ['中文',             ['cmn-Hans-CN', '普通话 (中国大陆)'],
-                     ['cmn-Hans-HK', '普通话 (香港)'],
-                     ['cmn-Hant-TW', '中文 (台灣)'],
-                     ['yue-Hant-HK', '粵語 (香港)']],
- ['日本語',           ['ja-JP']],
+ ['íêì',            ['ko-KR']],
+ ['äæ',             ['cmn-Hans-CN', 'æéè (äååé)'],
+                     ['cmn-Hans-HK', 'æéè (éæ)'],
+                     ['cmn-Hant-TW', 'äæ (åç)'],
+                     ['yue-Hant-HK', 'çè (éæ)']],
+ ['ææè',           ['ja-JP']],
  ['हिन्दी',            ['hi-IN']],
  ['ภาษาไทย',         ['th-TH']]];
 
@@ -289,17 +300,17 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
-    start_img.src = '/images/mic-animate.gif';
+    start_img.src = '/intl/en/chrome/assets/common/images/content/mic-animate.gif';
   };
 
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
-      start_img.src = '/images/mic.gif';
+      start_img.src = '/intl/en/chrome/assets/common/images/content/mic.gif';
       showInfo('info_no_speech');
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
-      start_img.src = '/images/mic.gif';
+      start_img.src = '/intl/en/chrome/assets/common/images/content/mic.gif';
       showInfo('info_no_microphone');
       ignore_onend = true;
     }
@@ -318,7 +329,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
-    start_img.src = '/images/mic.gif';
+    start_img.src = '/intl/en/chrome/assets/common/images/content/mic.gif';
     if (!final_transcript) {
       showInfo('info_start');
       return;
@@ -420,7 +431,7 @@ function startButton(event) {
   ignore_onend = false;
   final_span.innerHTML = '';
   interim_span.innerHTML = '';
-  start_img.src = '/images/mic-slash.gif';
+  start_img.src = '/intl/en/chrome/assets/common/images/content/mic-slash.gif';
   showInfo('info_allow');
   showButtons('none');
   start_timestamp = event.timeStamp;
